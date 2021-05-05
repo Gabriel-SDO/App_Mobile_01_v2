@@ -22,7 +22,7 @@ export class NewsPage implements OnInit {
   private apiItens = 10;
 
   // Endereço da API (Não altere se não souber o que faz)
-  private apiURL = `https://newsapi.org/v2/everything?apiKey=${this.apiKey}&source=google-news-br&language=pt&q=${this.apiQuery}`;
+  private apiURL = `https://newsapi.org/v2/everything?apiKey=${this.apiKey}&source=google-news-br&sortBy=publishedAt&language=pt&q=${this.apiQuery}`;
 
   // Armazena todas as notícias
   public newsList: any;
@@ -35,7 +35,21 @@ export class NewsPage implements OnInit {
 
   ngOnInit() {
 
-    
+    // Obtém as notícias da API via HTTP
+    this.httpc.get(this.apiURL).subscribe(
+
+      // Quando os dados forem recebidos da API
+      (data: any) => {
+
+        // Obtém as notícias e armazena em 'newsList'
+        this.newsList = data.articles.slice(0, this.apiItens);
+      }
+    );
   }
 
+  // Abre site com a notícia completa
+  newsOpen(url: string) {
+    window.open(url);
+    return false;
+  }
 }

@@ -3,26 +3,49 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+          <ion-list-header>Marfagafos</ion-list-header>
+          <!-- ion-note>Fazendo muito barulho!</ion-note -->
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+          <ion-img src="assets/logo01.png"></ion-img>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/home" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" name="home"></ion-icon>
+              <ion-label>Início</ion-label>
             </ion-item>
           </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/news" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" name="newspaper"></ion-icon>
+              <ion-label>Notícias</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/contacts" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="chatbubbles"></ion-icon>
+              <ion-label>Faça contato</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/about" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="information-circle"></ion-icon>
+              <ion-label>Sobre</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
         </ion-list>
 
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
-        </ion-list>
       </ion-content>
+
+      <div class="ion-text-center ion-padding">
+        <small>&copy; 2021 Copyright André Luferat.</small>
+      </div>
+
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
