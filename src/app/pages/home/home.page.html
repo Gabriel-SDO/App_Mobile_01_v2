@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- Mostra o botão do menu principal -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Início</ion-title>
+
+    <!-- Logotipo -->
+    <ion-img class="page-logo" slot="end" src="assets/logo01.png"></ion-img>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal" *ngIf="items">
+
+  <h2>Artigos Recentes</h2>
+  <p class="ion-text-right"><small>Mais novos primeiro.</small></p>
+
+  <div *ngFor="let item of items | async">
+
+    <ion-card class="ion-no-margin ion-margin-vertical" routerLink="/view/{{ item.id }}">
+      <ion-img src="{{ item.img }}" alt="{{ item.title }}"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{ item.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>{{ item.intro }}</ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>
