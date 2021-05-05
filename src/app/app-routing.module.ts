@@ -40,12 +40,38 @@ const routes: Routes = [
     loadChildren: () => import('./pages/view/view.module').then( m => m.ViewPageModule)
   },
 
+  //Página de visualização de artigo completo
+  {
+    path: 'aboutview/:id',
+    loadChildren: () =>
+      import('./pages/aboutview/aboutview.module').then(
+        (m) => m.AboutviewPageModule
+      ),
+  },
+
+  //configurações do usuario
+  {
+    path: 'login',
+    loadChildren: () => import('./user/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'logout',
+    loadChildren: () => import('./user/logout/logout.module').then( m => m.LogoutPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./user/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+
+
   // Página exibida quando a rota está errada
   // DEVE SER SEMPRE A ÚLTIMA ROTA
   {
     path: '**',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
   }
+
+  
 
 ];
 

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- Mostra o botão do menu principal -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Sobre</ion-title>
+
+    <!-- Logotipo -->
+    <ion-img class="page-logo" slot="end" src="assets/logo01.png"></ion-img>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal" *ngIf="item | async as art">
+
+  <h3>{{ art.title }}</h3>
+  <div class="ion-text-end"><small>Em {{ art.date | date: 'dd/MM/yyyy' }} às {{ art.date | date: 'hh:ss'}}.</small></div>
+  <div [innerHTML]="art.text"></div>
+
+  <ion-item-divider></ion-item-divider>
+
+  <p>
+    <ion-button routerLink="/about" expand="block">Voltar para Sobre</ion-button>
+  </p>
+
+</ion-content>
