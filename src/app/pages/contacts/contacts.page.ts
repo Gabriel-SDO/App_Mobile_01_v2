@@ -131,18 +131,26 @@ export class ContactsPage implements OnInit {
   // Popup de feedback
   async feedback() {
 
+    // Obtém somente primeiro nome do remetente
+    var name = this.contactForm.controls.name.value.split(' ');
+
     const alert = await this.alert.create({
-      header: 'Oba!',
+      header: `Olá ${name[0]}!`,
       message: 'Seu contato foi enviado com sucesso para a equipe do aplicativo.',
       buttons : [
 
-        // Botão [Ok]~
+        // Botão [Ok]
         {
           text: 'Ok',
           handler: () => {
 
             // Reset do formulário
-            this.contactForm.reset();
+            this.contactForm.reset({
+
+              // Mantém o nome e e-mail do rementente
+              name: this.contactForm.controls.name.value,
+              email: this.contactForm.controls.email.value
+            });
           }
         }
       ]
